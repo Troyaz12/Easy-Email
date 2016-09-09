@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.android.newemailappmom.MainActivity"
-    tools:showIn="@layout/activity_main">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="@string/exit"
-        android:id="@+id/exit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:background="#ffff0000"
-        android:onClick="exitApp"
-        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TableRow>
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/contact1"/>
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:id="@+id/contact2"/>
+        </TableRow>
+        <TableRow>
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/contact3"/>
+            <CheckBox
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="150dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/contact4"/>
+        </TableRow>
+        <TableRow>
+
+            <CheckBox
+
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/contact5"/>
+            <CheckBox
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="150dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/contact6"/>
+        </TableRow>
+        <TableRow>
+
+            <CheckBox
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="100dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/contact7"/>
+        </TableRow>
+    </TableLayout>
+
     <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="@string/check_email"
         android:id="@+id/emailProgram"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
         android:background="#0000FF"
         android:onClick="openEmail"
         />
@@ -43,83 +79,5 @@
         android:background="#ff00ff00"
         android:onClick="email"
         />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/exit"
-        >
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TableRow>
-            <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttontroy"
-                android:id="@+id/contact1"/>
-
-            <CheckBox
-                android:layout_marginLeft="150dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttoncory"
-                android:id="@+id/contact2"
-                />
-            </TableRow>
-            <TableRow>
-            <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttonmarc"
-                android:id="@+id/contact3"
-               />
-
-            <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="150dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttonpiche"
-                android:id="@+id/contact4"
-
-               />
-            </TableRow>
-        <TableRow>
-            <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttonadrian"
-                android:id="@+id/contact5"
-               />
-
-            <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="150dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttonbrennen"
-                android:id="@+id/contact6"
-
-              />
-            </TableRow>
-            <TableRow>
-            <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:button="@drawable/custombuttondad"
-                android:id="@+id/contact7"
-               />
-            </TableRow>
-
-
-        </TableLayout>
-
-    </ScrollView>
-
-
 
 </RelativeLayout>
