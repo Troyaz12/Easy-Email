@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 // Load the sound
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
@@ -180,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         if(soundOn==true)
             selected.start();
 
-        Intent intent = new Intent();
+        Intent intent = new Intent();       //creates an intent to open the users gmail account
         intent.setClass(this,openEmailProgram.class);
         startActivity(intent);
     }
@@ -228,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_SENDTO,
                 Uri.fromParts("mailto", eMail, null)
         );
-        i.putExtra(Intent.EXTRA_SUBJECT, "Hi from Mom/Nana.");
+        i.putExtra(Intent.EXTRA_SUBJECT, "Hi from Mom/Nana.");  //add subject line to email
         startActivity(i);
     }
 }

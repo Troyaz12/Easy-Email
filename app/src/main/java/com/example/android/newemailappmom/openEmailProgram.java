@@ -20,6 +20,7 @@ public class openEmailProgram extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.openemailprogram);
 
+        //the email account of the user will be loaded in a webview
         myWebView = (WebView) findViewById(R.id.webView);
         myWebView.getSettings().setBuiltInZoomControls(true);
 
@@ -49,7 +50,7 @@ public class openEmailProgram extends AppCompatActivity {
                 return true;
             }
         });
-
+        //load users gmail account
         myWebView.loadUrl("http://gmail.com");
 
     }
