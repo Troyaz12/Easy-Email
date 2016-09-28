@@ -8,10 +8,10 @@ import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,12 +29,22 @@ public class MainActivity extends AppCompatActivity {
     private int soundID;
     private float volume;
     private boolean soundOn = false;
+    private Toolbar mToolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout)).setTitle("Easy Email!");
+       // ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout)).setTitle("Easy Email!");
+
+        mToolbar = (Toolbar) findViewById(R.id.app_bar);   //get toolbar from the activity_article_list layout
+        setSupportActionBar(mToolbar);                  //set appbar
+        getSupportActionBar().setDisplayShowTitleEnabled(false);    //remove display
+
+
+
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new RecyclerView.Adapter<ViewHolder>() {
