@@ -12,12 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import static com.example.android.newemailappmom.R.id.contact1;
 
 public class MainActivity extends AppCompatActivity {
     private String eMail=null;
@@ -37,12 +41,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout)).setTitle("Easy Email!");
-
         mToolbar = (Toolbar) findViewById(R.id.app_bar);   //get toolbar from the activity_article_list layout
         setSupportActionBar(mToolbar);                  //set appbar
-        getSupportActionBar().setDisplayShowTitleEnabled(false);    //remove display
-
+        getSupportActionBar().setDisplayShowTitleEnabled(true);    //remove display
 
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
@@ -85,15 +86,15 @@ public class MainActivity extends AppCompatActivity {
         soundID = soundPool.load(this, R.raw.unselect, 1);
 
 
+        CheckBox contact1 = (CheckBox) findViewById(R.id.contact1);
+        CheckBox contact2 = (CheckBox) findViewById(R.id.contact2);
+        CheckBox contact3 = (CheckBox) findViewById(R.id.contact3);
+        CheckBox contact4 = (CheckBox) findViewById(R.id.contact4);
+        CheckBox contact5 = (CheckBox) findViewById(R.id.contact5);
+        CheckBox contact6 = (CheckBox) findViewById(R.id.contact6);
+        CheckBox contact7 = (CheckBox) findViewById(R.id.contact7);
 
-  //      CheckBox contact2 = (CheckBox) findViewById(R.id.contact2);
-  //      CheckBox contact3 = (CheckBox) findViewById(R.id.contact3);
-  //      CheckBox contact4 = (CheckBox) findViewById(R.id.contact4);
-    //    CheckBox contact5 = (CheckBox) findViewById(R.id.contact5);
-      //  CheckBox contact6 = (CheckBox) findViewById(R.id.contact6);
-     //   CheckBox contact7 = (CheckBox) findViewById(R.id.contact7);
 
-/*
         //set click listeners for checkboxes
         contact1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -173,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        */
+
     }
 
     protected void onStart(){
@@ -260,18 +261,18 @@ public class MainActivity extends AppCompatActivity {
         if(soundOn==true)
             selected.start();
 
-        CheckBox checkBox1 = (CheckBox) findViewById(R.id.contact1);
-    //    CheckBox checkBox2 = (CheckBox) findViewById(R.id.contact2);
-  //      CheckBox checkBox3 = (CheckBox) findViewById(R.id.contact3);
-  //      CheckBox checkBox4 = (CheckBox) findViewById(R.id.contact4);
-  //      CheckBox checkBox5 = (CheckBox) findViewById(R.id.contact5);
- //       CheckBox checkBox6 = (CheckBox) findViewById(R.id.contact6);
- //       CheckBox checkBox7 = (CheckBox) findViewById(R.id.contact7);
+        CheckBox checkBox1 = (CheckBox) findViewById(contact1);
+        CheckBox checkBox2 = (CheckBox) findViewById(R.id.contact2);
+        CheckBox checkBox3 = (CheckBox) findViewById(R.id.contact3);
+        CheckBox checkBox4 = (CheckBox) findViewById(R.id.contact4);
+        CheckBox checkBox5 = (CheckBox) findViewById(R.id.contact5);
+        CheckBox checkBox6 = (CheckBox) findViewById(R.id.contact6);
+        CheckBox checkBox7 = (CheckBox) findViewById(R.id.contact7);
 
         if(checkBox1.isChecked()==true){
             eMail = "example@gmail.com; ";
         }
-/*
+
         if(checkBox2.isChecked()==true){
             eMail = eMail+"example2@gmail.com; ";
         }
@@ -290,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
         if(checkBox7.isChecked()==true){
             eMail = eMail+"example7@gmail.com; ";
         }
-*/
+
         Intent i = new Intent(Intent.ACTION_SENDTO,
                 Uri.fromParts("mailto", eMail, null)
         );
