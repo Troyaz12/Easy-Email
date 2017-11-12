@@ -8,5 +8,6 @@
     <CheckBox
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:id="@+id/contact1"/>
+        android:id="@+id/contact1"
+        android:background="?android:attr/selectableItemBackground"/>
 </LinearLayout>

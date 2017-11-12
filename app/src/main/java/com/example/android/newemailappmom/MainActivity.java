@@ -2,24 +2,19 @@ package com.example.android.newemailappmom;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import static com.example.android.newemailappmom.R.id.contact1;
 
@@ -34,12 +29,22 @@ public class MainActivity extends AppCompatActivity {
     private float volume;
     private boolean soundOn = false;
     private Toolbar mToolbar;
-
+    private int[] contactsArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        int[] contactsArray = {
+                R.drawable.custombuttonadrian,
+                R.drawable.custombuttonbrennen,
+                R.drawable.custombuttoncory,
+                R.drawable.custombuttondad,
+                R.drawable.custombuttonmarc,
+                R.drawable.custombuttonpiche,
+                R.drawable.custombuttontroy,
+        };
 
         mToolbar = (Toolbar) findViewById(R.id.app_bar);   //get toolbar from the activity_article_list layout
         setSupportActionBar(mToolbar);                  //set appbar
@@ -47,11 +52,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        rv.setLayoutManager(layoutManager);
+        RecyclerView.Adapter imageAdapter = new contactsDisplayAdapter(contactsArray);
+
+        rv.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, rv,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onClick(View view, int position) {
+                        // TODO Handle item click
+
+                        System.out.println("Clicked!");
+                    }
+                })
+        );
+        rv.setAdapter(imageAdapter);
+
+ /*       rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new RecyclerView.Adapter<ViewHolder>() {
             @Override
             public ViewHolder onCreateViewHolder(ViewGroup parent, int position) {
-                return new ViewHolder(getLayoutInflater().inflate(R.layout.content_main, parent, false));
+                return new ViewHolder(getLayoutInflater().inflate(content_main, parent, false));
             }
 
             @Override
@@ -63,18 +84,20 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.contact5.setBackgroundResource(R.drawable.custombuttonbrennen);
                 viewHolder.contact6.setBackgroundResource(R.drawable.custombuttonadrian);
                 viewHolder.contact7.setBackgroundResource(R.drawable.custombuttondad);
+
             }
+
 
             @Override
             public int getItemCount() {
                 return 1;
             }
         });
+*/
 
-
-        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+ //       this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 // Load the sound
-        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+  /*      soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId,
@@ -86,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         soundID = soundPool.load(this, R.raw.unselect, 1);
 
 
-        CheckBox contact1 = (CheckBox) findViewById(R.id.contact1);
+        CheckBox contact1 = (CheckBox) rv.findViewById(R.id.contact1);
         CheckBox contact2 = (CheckBox) findViewById(R.id.contact2);
         CheckBox contact3 = (CheckBox) findViewById(R.id.contact3);
         CheckBox contact4 = (CheckBox) findViewById(R.id.contact4);
@@ -173,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("Test", "Played sound");
                 }
             }
-        });
+        });  */
 
     }
 
@@ -191,33 +214,7 @@ public class MainActivity extends AppCompatActivity {
         if(soundOn==true)
             intro.start();
     }
-    private static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView text1;
-        TextView text2;
-        CheckBox contact1;
-        CheckBox contact2;
-        CheckBox contact3;
-        CheckBox contact4;
-        CheckBox contact5;
-        CheckBox contact6;
-        CheckBox contact7;
 
-
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            // get checkbox
-            contact1 = (CheckBox) itemView.findViewById(R.id.contact1);
-            contact2 = (CheckBox) itemView.findViewById(R.id.contact2);
-            contact3 = (CheckBox) itemView.findViewById(R.id.contact3);
-            contact4 = (CheckBox) itemView.findViewById(R.id.contact4);
-            contact5 = (CheckBox) itemView.findViewById(R.id.contact5);
-            contact6 = (CheckBox) itemView.findViewById(R.id.contact6);
-            contact7 = (CheckBox) itemView.findViewById(R.id.contact7);
-
-
-        }
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -262,17 +259,12 @@ public class MainActivity extends AppCompatActivity {
             selected.start();
 
         CheckBox checkBox1 = (CheckBox) findViewById(contact1);
-        CheckBox checkBox2 = (CheckBox) findViewById(R.id.contact2);
-        CheckBox checkBox3 = (CheckBox) findViewById(R.id.contact3);
-        CheckBox checkBox4 = (CheckBox) findViewById(R.id.contact4);
-        CheckBox checkBox5 = (CheckBox) findViewById(R.id.contact5);
-        CheckBox checkBox6 = (CheckBox) findViewById(R.id.contact6);
-        CheckBox checkBox7 = (CheckBox) findViewById(R.id.contact7);
+
 
         if(checkBox1.isChecked()==true){
             eMail = "example@gmail.com; ";
         }
-
+/*
         if(checkBox2.isChecked()==true){
             eMail = eMail+"example2@gmail.com; ";
         }
@@ -291,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
         if(checkBox7.isChecked()==true){
             eMail = eMail+"example7@gmail.com; ";
         }
-
+*/
         Intent i = new Intent(Intent.ACTION_SENDTO,
                 Uri.fromParts("mailto", eMail, null)
         );

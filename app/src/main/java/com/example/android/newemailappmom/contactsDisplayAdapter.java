@@ -50,6 +50,7 @@ public class contactsDisplayAdapter extends RecyclerView.Adapter<contactsDisplay
             super(itemView);
             // get checkbox
             contact1 = (CheckBox) itemView.findViewById(R.id.contact1);
+
         }
     }
 }
